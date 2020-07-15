@@ -1,5 +1,5 @@
-toast("start")
-setScreenMetrics(1080,2160)
+toast("start");
+setScreenMetrics(1080,2160);
 
 const keyMap = {
         "A1":[700,200],
@@ -18,43 +18,39 @@ const keyMap = {
         "B7":[1300,600],
         "C1":[1500,600],
         "0":[0,0]
-    }
+    }; // 琴键位置映射坐标
 
-function pressKeys(keys, duration){
-    console.log("play", keys)
+function pressKeys(keys, duration){ // 按压琴键
+    console.log("play", keys);
     
     if(keys.length===1){
-        var site =keyMap[keys[0]]
-        if(site===""){
-            sleep(duration);
-            return 0;
-            }
+        var site =keyMap[keys[0]];
         press(site[0],site[1],duration);
         }
     else if(keys.length===2){
         gestures(
             [0,duration,keyMap[keys[0]],keyMap[keys[0]]],
             [0,duration,keyMap[keys[1]],keyMap[keys[1]]]
-            )
+            );
         }
     else{
         gestures(
             [0,duration,keyMap[keys[0]],keyMap[keys[0]]],
             [0,duration,keyMap[keys[1]],keyMap[keys[1]]],
             [0,duration,keyMap[keys[2]],keyMap[keys[2]]]
-            )
+            );
         }
     }
     
 function play(sheets){
-    var beats = sheets.split(",")
+    var beats = sheets.split(",");
     for(var i=0;i<beats.length;i++){
-        var beat = beats[i]
-        var keys = beat.split(" ")
-        console.log(beat)
-        var duration = keys[0].search('-') == -1 ? 500 : parseFloat(keys[0].split('-')[1]) * 1000
-        keys = keys.map(k => k.split('-')[0])
-        pressKeys(keys,duration)
+        var beat = beats[i];
+        var keys = beat.split(" ");
+        console.log(beat);
+        var duration = keys[0].search('-') == -1 ? 500 : parseFloat(keys[0].split('-')[1]) * 1000;
+        keys = keys.map(k => k.split('-')[0]);
+        pressKeys(keys,duration);
         }
     }
 
@@ -69,7 +65,7 @@ A1 A7,A4 B1,A3,0,A2 B1,A7,B1,A5 B2,0,\
 A1 A5,B1,B2,A6 B4,B3,A5 B2,A6 B4,A5 B3,B2,B1 B3,0,\
 B1 B3,A5 B2,B1,A4 B3,B6,A5 B2,B1,B2,0,\
 A1 A7,B1,B2,B2,A4 B5,B4,B3,A5 B2,B1,0,\
-A1 A6,A1 A7,B1,A3,A1 A7,B1,A5 B2,A5 B3,B2,A1 B1,A2 A7,A4 B1,B2,A2 B1"
+A1 A6,A1 A7,B1,A3,A1 A7,B1,A5 B2,A5 B3,B2,A1 B1,A2 A7,A4 B1,B2,A2 B1";
 
 
 const dayu = "B5-0.1,B1-0.1,B2-0.1,B3-0.1,B5-0.6,0-1,0-1,0-1,|B5-0.1,B6-0.1,B7-0.1,B1-0.1,B2-0.6,0-1,0-1,0-1,|\
@@ -87,7 +83,7 @@ B2-1,B3-1,0-1,A6-0.5,B1-0.5,|B2-0.75,B1-0.25,A6-1,A6-0.5,B1-0.5,|B2-1,B1-1,B2-0.
 B2-0.5,B3-0.5,A6-1,B2-0.5,B3-0.5,A6-0.5,A5-0.5,|A6-1,0-1,0-1,B3-0.5,B5-0.5,|\
 C1-0.75,B7-0.25,B3-1,B3-0.5,B2-0.5,|B1-1,B1-0.5,B2-0.5,B3-1,B3-0.5,B2-0.5,|B1-1,B6-0.5,C1-0.5,B7-0.5,B6-0.5,B5-0.5,B2-0.5,|\
 B3-1,0-1,0-1,B3-0.5,B5-0.5,|C1-0.75,B7-0.25,B3-1,B3-0.5,B2-0.5,|B1-1,B1-0.5,B2-0.5,B3-1,0-1,|\
-B2-0.5,B3-0.5,A6-1,B2-0.5,B3-0.5,A6-0.5,A5-0.5,|A6-1,0-1,0-1,0-1|".split('|').join('')
+B2-0.5,B3-0.5,A6-1,B2-0.5,B3-0.5,A6-0.5,A5-0.5,|A6-1,0-1,0-1,0-1|".split('|').join('');
 
 
 const yanhuayileng = "A3,A3,A5,0,A6,A5,A6,B1,0,A7,A6,A5,A6,A3,0,\
@@ -105,7 +101,7 @@ A6,B1,B3,B2,A6,B1,A7,A5,A6,0,\
 B5,B3,B2,0,B2,B2,B3,B1,B2,B3,0,\
 B5,B3,B2,0,B2,B2,A5,B3,B4,B3,B2,B3,0,\
 B3,B3,B7,B3,B2,0,B1,A7,B1,B2,B3,B6,0,\
-A6,B1,B3,B2,A6,B1,A7,A5,A6"
+A6,B1,B3,B2,A6,B1,A7,A5,A6";
 
 
 
@@ -126,12 +122,20 @@ A5,A6,B1,B1,A6,B1,B2,B3,B3,B2,B1,B2,0,\
 B3,B3,B2,B1,B3,B2,B1,B3,B2,B1,B1,0,\
 B1,A6,B1,B2,B3,B3,0,\
 A5,A6,B1,B1,A6,B1,B2,B3,B3,A5,0,\
-A5,A6,B1,B1,A6,B1,B2,B3,B3,B2,B1,B2,B1"
-
-play(xihuani)
-play(dayu)
-play(yanhuayileng)
-play(xiaoqingge)
+A5,A6,B1,B1,A6,B1,B2,B3,B3,B2,B1,B2,B1";
 
 
-toast("stop")
+toast("弹奏大鱼");
+play(dayu);
+sleep(3000);
+toast("弹奏烟花易冷");
+play(yanhuayileng);
+sleep(3000);
+toast("弹奏小情歌");
+play(xiaoqingge);
+sleep(3000);
+toast("弹奏喜欢你");
+play(xihuani);
+
+
+toast("stop");
